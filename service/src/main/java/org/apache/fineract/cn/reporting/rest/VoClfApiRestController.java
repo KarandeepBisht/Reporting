@@ -33,6 +33,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 @RestController
@@ -50,31 +51,31 @@ public class VoClfApiRestController {
             this.logger = logger;
             this.voClfApiService = voClfApiService;
         }
-        @Permittable(value= AcceptedTokenType.GUEST)
-        @RequestMapping(
-                value = "/clf-subCommity",
-                method = RequestMethod.POST,
-                consumes = MediaType.ALL_VALUE,
-                produces = MediaType.APPLICATION_JSON_VALUE
-        )
-        public
-        @ResponseBody
-        ResponseEntity<List<ClfSubCommityResponse>> getClfSCData(@RequestBody ClfSubCommityRequest request,
-                                                                 @RequestHeader Map<String, String> headers) {
-            if(headers.get("X-Tenant-Identifier")==null){
-                this.logger.error(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
-                throw new RequestInputMissing(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
-            }
-            String location_type = request.getLocation_type();
-            String date_to = request.getDate_to();
-            String date_from = request.getDate_from();
-            String state_id = request.getState_id();
-            String district_id = request.getDistrict_id();
-            String block_id = request.getBlock_id();
-            String tenantIdentifier = headers.get("X-Tenant-Identifier");
-            return ResponseEntity.ok(
-                    this.voClfApiService.getClfSCData(location_type,date_to,date_from, state_id, district_id, block_id, tenantIdentifier));
+    @Permittable(value= AcceptedTokenType.GUEST)
+    @RequestMapping(
+            value = "/clf-subCommity",
+            method = RequestMethod.POST,
+            consumes = MediaType.ALL_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public
+    @ResponseBody
+    ResponseEntity<List<ClfSubCommityResponse>> getClfSCData(@RequestBody ClfSubCommityRequest request,
+                                                             HttpServletRequest headerRequest) {
+        if(headerRequest.getHeader("X-Tenant-Identifier")==null){
+            this.logger.error(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
+            throw new RequestInputMissing(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
         }
+        String location_type = request.getLocation_type();
+        String date_to = request.getDate_to();
+        String date_from = request.getDate_from();
+        String state_id = request.getState_id();
+        String district_id = request.getDistrict_id();
+        String block_id = request.getBlock_id();
+            String tenantIdentifier = headerRequest.getHeader("X-Tenant-Identifier");
+        return ResponseEntity.ok(
+                this.voClfApiService.getClfSCData(location_type,date_to,date_from, state_id, district_id, block_id, tenantIdentifier));
+    }
 
     @Permittable(value= AcceptedTokenType.GUEST)
     @RequestMapping(
@@ -86,8 +87,8 @@ public class VoClfApiRestController {
     public
     @ResponseBody
     ResponseEntity<List<VoSubCommityResponse>> getClfSCData(@RequestBody VoSubCommityRequest request,
-                                                            @RequestHeader Map<String, String> headers) {
-        if(headers.get("X-Tenant-Identifier")==null){
+                                                            HttpServletRequest headerRequest) {
+        if(headerRequest.getHeader("X-Tenant-Identifier")==null){
             this.logger.error(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
             throw new RequestInputMissing(CustomStatus.REQUEST_INPUT_NOT_PRESENT_MSG + "{X-Tenant-Identifier}");
         }
@@ -97,7 +98,7 @@ public class VoClfApiRestController {
         String state_id = request.getState_id();
         String district_id = request.getDistrict_id();
         String block_id = request.getBlock_id();
-        String tenantIdentifier = headers.get("X-Tenant-Identifier");
+        String tenantIdentifier = headerRequest.getHeader("X-Tenant-Identifier");
         return ResponseEntity.ok(
                 this.voClfApiService.getVoSCData(location_type,date_to,date_from, state_id, district_id, block_id, tenantIdentifier));
     }
