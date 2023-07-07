@@ -5,7 +5,8 @@ import java.math.BigInteger;
 
 @Entity
 @Cacheable(value = false)
-@Table(name = "tbl_summary_cbobanks")
+//@Table(name = "tbl_summary_cbobanks")
+@Table(name = "reports.tbl_summary_cbobanks")
 public class BankWiseCboEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

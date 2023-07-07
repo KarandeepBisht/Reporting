@@ -13,7 +13,7 @@ public class ResponseBs {
     private Integer intBlockSix10sat;
     private Integer intBlockMore10;
     private Integer intBlockMore10sat;
-
+    private String updatedDate;
     public Integer getStateId() {
         return stateId;
     }
@@ -108,5 +108,13 @@ public class ResponseBs {
 
     public void setIntBlockMore10sat(Integer intBlockMore10sat) {
         this.intBlockMore10sat = intBlockMore10sat;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }

@@ -91,8 +91,8 @@ public class ProfileReportService<profileReportEntity> {
             stateId=-1;
         }
         List<ResponseMissionUnitLevel> responseMissionUnitLevelList = new ArrayList<>();
-    List<Object[]> objectList =objectList = profileReportRepository.fetchStateWiseMissionLevelReport(stateId);
-       /* try {*/
+        List<Object[]> objectList =objectList = profileReportRepository.fetchStateWiseMissionLevelReport(stateId);
+        /* try {*/
 
       /* }catch (Exception ex){
             System.out.println("---------------------------------------------------------------------------exception on this line --------------------------------------------------------------------------");
@@ -145,6 +145,9 @@ public class ProfileReportService<profileReportEntity> {
                 }
                 if (object[14] != null) {
                     responseMissionUnitLevel.setBlockThematicUser(new BigInteger(object[14].toString()));
+                }
+                if (object[15] != null){
+                    responseMissionUnitLevel.setUpdatedDate(object[15].toString());
                 }
                 responseMissionUnitLevelList.add(responseMissionUnitLevel);
             }
@@ -204,6 +207,9 @@ public class ProfileReportService<profileReportEntity> {
                 if (object[12] != null) {
                     responseMissionUnitLevel.setDistrictId(new Integer (object[12].toString()));
                 }
+                if (object[13] != null) {
+                    responseMissionUnitLevel.setUpdatedDate(object[13].toString());
+                }
                 responseMissionUnitLevelList.add(responseMissionUnitLevel);
             }
         }else{
@@ -233,11 +239,9 @@ public class ProfileReportService<profileReportEntity> {
                 if (object[1] != null) {
                     responseMissionUnitLevel.setDistrict(object[1].toString());
                 }
-
                 if (object[3] != null) {
                     responseMissionUnitLevel.setBlock(object[3].toString());
                 }
-
                 if (object[5] != null) {
                     responseMissionUnitLevel.setBlockAdmin(new BigInteger (object[5].toString()));
                 }
@@ -255,6 +259,9 @@ public class ProfileReportService<profileReportEntity> {
                 }
                 if (object[4] != null) {
                     responseMissionUnitLevel.setBlockId(new Integer(object[4].toString()));
+                }
+                if (object[11] != null) {
+                    responseMissionUnitLevel.setUpdatedDate(object[11].toString());
                 }
                 responseMissionUnitLevelList.add(responseMissionUnitLevel);
             }
@@ -306,6 +313,9 @@ public class ProfileReportService<profileReportEntity> {
                 }
                 if (object[9] != null) {
                     responseBs.setIntBlockMore10sat(new Integer (object[9].toString()));
+                }
+                if (object[10] != null) {
+                    responseBs.setUpdatedDate(object[10].toString());
                 }
                 responseBsList.add(responseBs);
             }
@@ -365,6 +375,9 @@ public class ProfileReportService<profileReportEntity> {
                 }
                 if (object[11] != null) {
                     responseBs.setIntBlockMore10sat(new Integer (object[11].toString()));
+                }
+                if (object[12] != null) {
+                    responseBs.setUpdatedDate(object[12].toString());
                 }
                 responseBsList.add(responseBs);
             }

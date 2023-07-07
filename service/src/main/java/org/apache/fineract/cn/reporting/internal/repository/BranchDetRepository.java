@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface BranchDetRepository extends JpaRepository<BranchDetEntity, BigInteger> {
-    @Query(nativeQuery = true, value="select branch_id,branch_name from tbl_summary_banks " +
+    @Query(nativeQuery = true, value="select branch_id,branch_name from reports.tbl_summary_banks " +
             " where geographical_flag=?1 and year_month='2023-05' and state_id=?2   and bank_id = ?3" +
             " group by branch_id,branch_name")
     List<Object[]> fetchBranchList(

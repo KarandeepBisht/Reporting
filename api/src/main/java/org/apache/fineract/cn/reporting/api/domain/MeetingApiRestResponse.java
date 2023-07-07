@@ -28,7 +28,7 @@ public class MeetingApiRestResponse {
     private Integer clfVoShgMem;
     private Integer shgMemGenMonth;
 
-//    private String updatedDate;
+    private String updatedDate;
     public Integer getShgMemGenMonth() {
         return shgMemGenMonth;
     }
@@ -216,13 +216,13 @@ public class MeetingApiRestResponse {
         this.geographicalFlag = geographicalFlag;
     }
 
-//    public String getUpdatedDate() {
-//        return updatedDate;
-//    }
-//
-//    public void setUpdatedDate(String updatedDate) {
-//        this.updatedDate = updatedDate;
-//    }
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
+    }
 }
 
 

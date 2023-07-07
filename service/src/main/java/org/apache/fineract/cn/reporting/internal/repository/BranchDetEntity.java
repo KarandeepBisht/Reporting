@@ -4,19 +4,20 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 @Entity
 @Cacheable(value = false)
-@Table(name = "tbl_summary_banks")
+//@Table(name = "tbl_summary_banks")
+@Table(name = "reports.tbl_summary_banks")
 public class BranchDetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private BigInteger id ;
-        @Column(name = "bank_id")
-        private Integer bankId;
-        @Column(name = "geographical_flag")
-        private Integer geographicalFlag;
-        @Column(name = "branch_id")
-        private Integer branchId;
+    @Column(name = "bank_id")
+    private Integer bankId;
+    @Column(name = "geographical_flag")
+    private Integer geographicalFlag;
+    @Column(name = "branch_id")
+    private Integer branchId;
     @Column(name = "branch_name")
     private String branchName;
 
@@ -50,13 +51,13 @@ public class BranchDetEntity {
     public void setBranchName(String branchName) {
         this.branchName = branchName;
     }
-        public Integer getGeographicalFlag() {
-            return geographicalFlag;
-        }
-
-        public void setGeographicalFlag(Integer geographicalFlag) {
-            this.geographicalFlag = geographicalFlag;
-        }
-
-
+    public Integer getGeographicalFlag() {
+        return geographicalFlag;
     }
+
+    public void setGeographicalFlag(Integer geographicalFlag) {
+        this.geographicalFlag = geographicalFlag;
+    }
+
+
+}
